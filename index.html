@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CSS Button Creator</title>
+</head>
+<body>
+    <section class="button-creator">
+        <form id="controls" class="controls">
+            <label for="innerText">texto</label>
+            <input type="text" name="innerText" id="innerText">
+            <label for="color">color</label>
+            <input type="color" name="color" id="color">
+            <label for="backgroundColor">background-color</label>
+            <input type="color" name="backgroundColor" id="backgroundColor">
+            <label for="height">height</label>
+            <input type="range" name="height" id="height" min="0" max="200" value="21">
+            <label for="width">width</label>
+            <input type="range" name="width" id="width" min="0" max="600" value="53.8">
+            <label for="border">border</label>
+            <input type="text" name="border" id="border">
+            <label for="borderRadius">border-radius</label>
+            <input type="range" name="borderRadius" id="borderRadius" min="0" max="30" step="1" value="0">
+            <label for="fontFamily">font-family</label>
+            <select name="fontFamily" id="fontFamily">
+                <option value="" selected hidden>Selecione a fonte</option>
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="monospace">Monospace</option>
+                <option value="inherit">inherit</option>
+            </select>
+            <label for="fontSize">font-size</label>
+            <input type="number" name="fontSize" id="fontSize" step=".1" value="0.8">
+
+        </form>
+        <section class="results">
+            <button class="btn">
+                Clique
+            </button>
+            <pre><code class="css">
+            </code></pre>
+        </section>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
