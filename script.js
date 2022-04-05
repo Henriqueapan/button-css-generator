@@ -17,6 +17,10 @@ reset_button.onclick = () => {
 }
 
 copy_button.onclick = () => {
+    if (cssText.innerText === '') {
+        window.alert("Você não personalizou seu botão ainda! Personalize-o para poder copiar o código CSS para a área de transferência.")
+        return -1
+    }
     temp_input = document.createElement('textarea')
     temp_input.value = cssText.innerText
     document.body.appendChild(temp_input)
@@ -27,8 +31,8 @@ copy_button.onclick = () => {
     temp_input.style.overflow = 'hidden'
     temp_input.style.resize = 'none'
     temp_input.select()
-    document.getElementById('innerText').select()
     document.execCommand("Copy")
+    document.getElementById('innerText').select()
     document.body.removeChild(temp_input)
     window.alert("CSS copiado para a área de transferência!")
 }
