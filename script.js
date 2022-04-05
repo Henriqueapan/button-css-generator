@@ -1,8 +1,19 @@
 const controls = document.querySelector('#controls'),
 cssText = document.querySelector('.css'),
 btn = document.querySelector('.btn'),
-dinamic = document.querySelectorAll('#controls input[type="range"], #controls input[type="color"]');
+dinamic = document.querySelectorAll('#controls input[type="range"], #controls input[type="color"]'),
+reset_button = document.getElementById('reset-btn');
 
+window.onload = () => {
+    setValues()
+    updateCssText()
+}
+
+reset_button.onclick = () => {
+    if (window.confirm("Tem certeza de que quer reiniciar as configurações do botão? Clique em OK para confirmar."))
+        localStorage.clear()
+        location.reload()
+}
 
 controls.addEventListener('change', handleChange)
 dinamic.forEach(i => i.addEventListener('input', handleChange))
@@ -54,6 +65,34 @@ const styleUpdater = {
     },
 }
 
+function saveValues(name, value) {
+    localStorage[name] = value
+}
+
+function setValues() {
+    const localStorageProperties = Object.keys(localStorage)
+
+    localStorageProperties.forEach(property => {
+        styleUpdater[property](localStorage[property])
+
+        input = document.getElementById(property)
+
+        if (input.tagName !== 'SELECT') {
+            input.setAttribute('value', localStorage[property])
+        }
+        else {
+            Array.from(input.children).forEach(i => {
+                if(typeof i.getAttribute('selected') !== null){
+                    i.removeAttribute('selected')
+                }
+                if(i.getAttribute('value') === localStorage[property]) {
+                    i.setAttribute('selected', '')
+                }
+            })
+        }
+    })
+}
+
 function updateCssText(){
     btn.style.cssText ? cssText.innerHTML = '<span>' + btn.style.cssText.split('; ').join(';</span><span>') : cssText.innerHTML = ''
 }
@@ -63,4 +102,5 @@ function handleChange(event) {
     value = event.target.value
     styleUpdater[name](value)
     updateCssText()
+    saveValues(name, value)
 }

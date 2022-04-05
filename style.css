@@ -2,7 +2,8 @@
 
 body {
     margin: 0;
-    background: #ccc;
+    /* background: #ccc; */
+    background: rgba(0, 0, 0, 0.75);
 }
 
 label {
@@ -34,15 +35,42 @@ input {
     user-select: none;
 }
 
+.controls button {
+    text-transform: uppercase;
+    width: 170px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: rgb(172, 172, 172);
+    color: black;
+}
+
+.results {
+    width: 100%;
+}
+
+.btn-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
 .css {
     font-family: 'IBM Plex Mono', monospace;
     color: #333;
-    margin-top: 40px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 .css span {
     display: block;
     margin: 0 0 .5rem 0;
+    color: white;
 }
