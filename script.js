@@ -20,8 +20,15 @@ copy_button.onclick = () => {
     temp_input = document.createElement('textarea')
     temp_input.value = cssText.innerText
     document.body.appendChild(temp_input)
+    temp_input.style.backgroundColor = 'transparent'
+    temp_input.style.color = 'rgba(0,0,0,0)'
+    temp_input.style.border = 'none'
+    temp_input.style.pointerEvents = 'none'
+    temp_input.style.overflow = 'hidden'
+    temp_input.style.resize = 'none'
     temp_input.select()
-    document.execCommand("Copy");
+    document.getElementById('innerText').select()
+    document.execCommand("Copy")
     document.body.removeChild(temp_input)
     window.alert("CSS copiado para a área de transferência!")
 }
