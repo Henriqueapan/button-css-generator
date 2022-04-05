@@ -48,6 +48,11 @@ input {
     padding: 10px;
     background-color: rgb(172, 172, 172);
     color: black;
+    border: 2px solid black;
+}
+
+.controls button#copy-btn {
+    background-color: rgb(183, 0, 255);
 }
 
 .results {

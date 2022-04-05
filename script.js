@@ -2,7 +2,8 @@ const controls = document.querySelector('#controls'),
 cssText = document.querySelector('.css'),
 btn = document.querySelector('.btn'),
 dinamic = document.querySelectorAll('#controls input[type="range"], #controls input[type="color"]'),
-reset_button = document.getElementById('reset-btn');
+reset_button = document.getElementById('reset-btn'),
+copy_button = document.getElementById('copy-btn');
 
 window.onload = () => {
     setValues()
@@ -13,6 +14,16 @@ reset_button.onclick = () => {
     if (window.confirm("Tem certeza de que quer reiniciar as configurações do botão? Clique em OK para confirmar."))
         localStorage.clear()
         location.reload()
+}
+
+copy_button.onclick = () => {
+    temp_input = document.createElement('textarea')
+    temp_input.value = cssText.innerText
+    document.body.appendChild(temp_input)
+    temp_input.select()
+    document.execCommand("Copy");
+    document.body.removeChild(temp_input)
+    window.alert("CSS copiado para a área de transferência!")
 }
 
 controls.addEventListener('change', handleChange)
